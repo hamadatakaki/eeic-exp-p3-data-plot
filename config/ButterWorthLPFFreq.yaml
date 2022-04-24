@@ -1,0 +1,20 @@
+figure:
+  color: "red"
+  legend_loc: "lower left"
+  title: "ButterWorth LPFの周波数特性"
+  figsize: [7.2, 4.8]
+
+  xlabel: "周波数[Hz]"
+  xscale: "log"
+  xticks: [[1000, 10000, 100000, 1000000, 10000000], ["1k", "10k", "100k", "1M", "10M"]]
+
+  axes:
+    amp:
+      ylabel: "振幅[dB]"
+      style: "solid"
+      yscale: "linear"
+
+    phase:
+      ylabel: "位相[deg]"
+      style: "dashed"
+      yscale: "linear"

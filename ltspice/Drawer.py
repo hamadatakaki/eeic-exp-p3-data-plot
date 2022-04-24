@@ -1,4 +1,5 @@
 import matplotlib.pyplot as plt
+import japanize_matplotlib
 from ltspice.utils import safe_dictionary_access, none_wrap
 
 
