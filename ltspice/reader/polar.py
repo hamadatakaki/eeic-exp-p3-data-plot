@@ -68,19 +68,3 @@ class LTspicePolarReader(object):
         print("frequencies range [Hz]:", [self.freqs[0], self.freqs[-1]])
         print("amplitude range [dB]", [max(self.amps), self.amps[-1]])
         print("phase ranges [deg]:", [self.phases[0], self.phases[-1]])
-
-
-class LTspiceCartesianReader(object):
-    pass
-
-
-if __name__ == "__main__":
-    bwpath = "./data/LPFButterWorthFreqChar_polar/LPFButterWorthFreqChar_dBdeg.txt"
-    bwreader = LTspicePolarReader(bwpath)
-    bwreader.logging()
-
-    cpath = "./data/LPFButterWorthFreqChar_polar/LPFChebyshevFreqChar_dBdeg.txt"
-    creader = LTspicePolarReader(cpath)
-    creader.logging()
-
-    assert bwreader.freqs == creader.freqs

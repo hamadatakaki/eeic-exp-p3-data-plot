@@ -3,8 +3,8 @@ from pathlib import Path
 import yaml
 
 
-from ltspice.LTspiceReader import LTspicePolarReader
-from ltspice.Drawer import SimpleFreqDrawer
+from ltspice.reader.polar import LTspicePolarReader
+from ltspice.drawer.SimpleFreq import SimpleFreqDrawer
 
 
 def check_args(args):
