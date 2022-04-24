@@ -103,3 +103,17 @@ step voltage range [V]: [0.0, 1.07114]
 # Drawer
 figure size: [7.2 4.8]
 ```
+
+## 2つのフィルタで周波数特性の比較
+
+![Compare](fig/CharFreqCompare.png)
+
+```shell
+> python plot_freq_char_compare.py -bw <input butter-worth txt path> -ch <input chebyshev txt path> -o <image dst path> -c config/CompareFreqBWChebyshev.yaml
+```
+
+`<input butter-worth txt path>` はButter-Worthフィルタの周波数特性を出力した `.txt` のパスを、
+`<input chebyshev txt path>` はChebyshevフィルタの周波数特性を出力した `.txt` のパスを、
+`<image dst path>` は周波数特性比較図の保存先のパス（拡張子はpng）を指定してください。
+
+`-c` オプションは周波数特性と同様です。 `config/CompareFreqBWChebyshev.yaml` を選んでください

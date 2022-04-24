@@ -31,15 +31,17 @@ class SimpleFreqDrawer(BaseDrawer):
             ax = self.ax_phase
             ys = self.reader.phases
 
+        hier = ["axes", key]
+
         # line style
-        style = self.safe_config_access(["axes", key, "style"], "solid")
+        style = self.safe_config_access(hier + ["style"], "solid")
 
         # y-axis label
-        ylabel = self.safe_config_access(["axes", key, "ylabel"], "")
+        ylabel = self.safe_config_access(hier + ["ylabel"], "")
         ax.set_ylabel(ylabel)
 
         # y-axis scale
-        yscale = self.safe_config_access(["axes", key, "yscale"], "linear")
+        yscale = self.safe_config_access(hier + ["yscale"], "linear")
         ax.set_yscale(yscale)
 
         ax.plot(xs, ys, color=self.color, label=ylabel, linestyle=style)

@@ -19,3 +19,9 @@
 # Chebyshevのstep応答
 
 TODO: まだ試してない
+
+# 周波数特性の比較
+
+```
+python plot_freq_char_compare.py -bw data/butterworth.txt -ch data/chebyshev.txt -o fig/CharFreqCompare.png -c config/CompareFreqBWChebyshev.yaml
+```

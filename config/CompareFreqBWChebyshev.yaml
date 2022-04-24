@@ -1,0 +1,26 @@
+figure:
+  figsize: [14.4, 4.8]
+
+  xlabel: "周波数[Hz]"
+  xscale: "log"
+  xticks: [[1000, 10000, 100000, 1000000, 10000000], ["1k", "10k", "100k", "1M", "10M"]]
+
+  filter:
+    bw:
+      color: "red"
+
+    chebyshev:
+      color: "blue"
+
+  axes:
+    amp:
+      legend_loc: "lower left"
+      title: "振幅特性"
+      ylabel: "振幅[dB]"
+      yscale: "linear"
+
+    phase:
+      legend_loc: "lower left"
+      title: "移送特性"
+      ylabel: "位相[deg]"
+      yscale: "linear"

@@ -10,7 +10,7 @@ from ltspice.utils import load_yaml
 japanize_matplotlib.japanize()
 
 
-# TODO: 動く
+# TODO: 動くようにする
 
 
 class CompareFreqDrawer(object):
