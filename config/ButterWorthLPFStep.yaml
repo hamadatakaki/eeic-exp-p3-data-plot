@@ -11,8 +11,8 @@ figure:
 
   lines:
     pulse:
-      legend: "ステップ入力"
-      color: "black"
+      legend: "電源入力"
+      color: "gray"
 
     step:
       legend: "ステップ応答"

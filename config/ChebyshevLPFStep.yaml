@@ -12,7 +12,7 @@ figure:
   lines:
     pulse:
       legend: "ステップ入力"
-      color: "black"
+      color: "gray"
 
     step:
       legend: "ステップ応答"
