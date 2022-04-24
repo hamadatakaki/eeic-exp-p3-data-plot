@@ -1,7 +1,9 @@
 from pathlib import Path
 
+from ltspice.reader.BaseReader import BaseReader
 
-class LTspicePolarReader(object):
+
+class LTspicePolarReader(BaseReader):
     def __init__(self, path) -> None:
         self.freqs = []
         self.amps = []
@@ -12,31 +14,18 @@ class LTspicePolarReader(object):
         self.analysis()
 
     def readfile(self):
-        assert self.path.exists(), f"[error] File `{self.path}` must exist."
-        with open(self.path, "rb") as rb:
-            self.txt = rb.read().replace(b"\xb0", b"").decode("utf8").strip()
+        self.txt = self._readfile(self.path, True)
 
     def analysis(self):
-        txt = self.txt.replace("\r", "")
-        lines = txt.split("\n")
-        head = lines[0]
+        lines = self.txt.split("\n")
         body = lines[1:]
         self.datasize = len(body)
 
-        h_split = head.split("\t")
-        if len(h_split) > 2:
-            print("[warn] unnecessary element included in head:", head)
-        elif len(h_split) < 2:
-            print("[warn] some elements not exist in head:", head)
+        self._check_head(lines[0])
 
         for i, b in enumerate(body):
+            self._check_body(b, i)
             b_split = b.split("\t")
-            if len(b_split) > 2:
-                print("[warn] unnecessary element included in body:")
-                print(f"  {i+1}| {b}")
-            elif len(b_split) < 2:
-                print("[warn] some elements not exist in body:")
-                print(f"  {i+1}| {b}")
 
             self.freqs.append(float(b_split[0]))
             polar = b_split[1]

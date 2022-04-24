@@ -1,4 +1,4 @@
-from ltspice.drawer.base import BaseDrawer
+from ltspice.drawer.BaseDrawer import BaseDrawer
 
 
 class SimpleFreqDrawer(BaseDrawer):

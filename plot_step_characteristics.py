@@ -3,8 +3,8 @@ from pathlib import Path
 import yaml
 
 
-from ltspice.reader.Polar import LTspicePolarReader
-from ltspice.drawer.SimpleFreq import SimpleFreqDrawer
+from ltspice.reader.Step import LTspiceStepReader
+from ltspice.drawer.SimpleStep import SimpleStepDrawer
 
 
 def check_args(args):
@@ -17,13 +17,13 @@ def check_args(args):
 
         config = yaml.safe_load(stream)
 
-    return LTspicePolarReader(args.input_txt), config
+    return LTspiceStepReader(args.input_txt, args.step_txt), config
 
 
 def main(args):
     reader, config = check_args(args)
 
-    drawer = SimpleFreqDrawer(reader, args.output_image, config)
+    drawer = SimpleStepDrawer(reader, args.output_image, config)
     drawer.save_figure()
     drawer.logging()
 
@@ -33,7 +33,10 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=desc_msg)
 
     parser.add_argument(
-        "-i", "--input_txt", required=True, help="LTspice export data path."
+        "-i", "--input_txt", required=True, help="LTspice export input-pulse data path."
+    )
+    parser.add_argument(
+        "-s", "--step_txt", required=True, help="LTspice export output-step data path."
     )
     parser.add_argument(
         "-o", "--output_image", required=True, help="Plot image save path."

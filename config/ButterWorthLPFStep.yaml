@@ -1,0 +1,19 @@
+figure:
+  legend_loc: "lower right"
+  title: "ButterWorth LPFのステップ応答"
+  figsize: [7.2, 4.8]
+
+  ylabel: "電圧[V]"
+
+  xlabel: "時刻[ms]"
+  xscale: "linear"
+  xticks: [[0, 0.5e-3, 1.0e-3, 1.5e-3, 2.0e-3], ["0.0", "0.5", "1.0", "1.5", "2.0"]]
+
+  lines:
+    pulse:
+      legend: "ステップ入力"
+      color: "black"
+
+    step:
+      legend: "ステップ応答"
+      color: "red"
