@@ -1,4 +1,5 @@
 from matplotlib import pyplot as plt
+import numpy as np
 from ltspice.drawer.BaseDrawer import BaseDrawer
 
 
@@ -20,6 +21,8 @@ class CompareFreqCharsDrawer(BaseDrawer):
         self.configure()
         for key in ["amp", "phase"]:
             self.draw(key)
+
+        self.draw_appro()
 
         self.legend()
         self.fig.tight_layout()
@@ -61,8 +64,25 @@ class CompareFreqCharsDrawer(BaseDrawer):
             xs = self.readers[filt].freqs
             ys = self.readers[filt].amps if key == "amp" else self.readers[filt].phases
             color = self.safe_config_access(["filter", filt, "color"], "black")
+            legend = self.safe_config_access(["filter", filt, "legend"], "hoge[fuga]")
 
-            ax.plot(xs, ys, color=color, label=ylabel)
+            ax.plot(xs, ys, color=color, label=legend)
+
+    def __approximate(self, f):
+        amp = -60.0 * np.log10(2 * np.pi * f) + 330
+        phase = -270.0
+        return (amp, phase)
+
+    def draw_appro(self):
+        bw = self.readers["bw"]
+        freqs = bw.freqs
+        xs = [f for f in freqs if f >= 5e4]
+        ys = [self.__approximate(x) for x in xs]
+        ys_amp = [amp for (amp, _) in ys]
+        ys_phase = [phase for (_, phase) in ys]
+
+        self.axes["amp"].plot(xs, ys_amp, color="green", label="高周波での伝達関数の近似")
+        self.axes["phase"].plot(xs, ys_phase, color="green", label="高周波での伝達関数の近似")
 
     def legend(self):
         for key in ["amp", "phase"]:

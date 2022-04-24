@@ -8,9 +8,11 @@ figure:
   filter:
     bw:
       color: "red"
+      legend: "Butter-Worth 特性"
 
     chebyshev:
       color: "blue"
+      legend: "Chebyshev 特性"
 
   axes:
     amp:
@@ -21,6 +23,6 @@ figure:
 
     phase:
       legend_loc: "lower left"
-      title: "移送特性"
+      title: "位相特性"
       ylabel: "位相[deg]"
       yscale: "linear"
