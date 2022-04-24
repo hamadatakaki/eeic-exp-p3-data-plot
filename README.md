@@ -4,9 +4,11 @@
 
 1. LTspiceの `export data` 機能でプロットしたいデータを `.txt` 形式にしてダウンロードする
 
-この時、Formatに `Polar: (dB, deg)` を指定する（デフォルトで `Polar: (dB, deg)` になっている）
+Formatには `Polar: (dB, deg)` を指定する。
 
-2. このリポジトリをcloneしてくる
+この時、1つの波形のみが描画されたシミュレーション画面から `.txt` を抽出してください。
+
+1. このリポジトリをcloneしてくる
 
 ```
 > git clone https://github.com/hamadatakaki/ltspice-plot.git
@@ -30,12 +32,39 @@
 
 4. 実行
 
+生成したいグラフに対する `.py` を [examples](#examples) から選んで実行する
+
 ```
-# TODO: ここを直す
-> python3 bin/hoge.py
-> python bin/hoge.py  # 仮想環境を挟む場合こうなるはず
+> python3 <.py file>
+> python <.py file> # 仮想環境を挟む場合こうなるはず
 ```
 
 # examples
 
-略
+## シンプルな周波数特性図
+
+![SBWFC](fig/butterworth_freq_char.png)
+
+対応するファイルは `plot_characteristics.py`
+
+```shell
+> python3 plot_characteristics -i <input txt path> -o <image dst path> -c config/simple_drawer.yaml
+```
+
+`<imput txt path>` は周波数特性図に変換したい `.txt` のパスを、 `<image dst path>` は周波数特性図の保存先のパス（拡張子はpng）を指定してください。
+
+`-c` オプションの引数はなるべく変更しないでください。
+
+```shell
+## usage
+> python3 plot_characteristics.py -i data/butterworth.txt -o fig/butterworth_freq_char.png -c config/simple_drawer.yaml
+# LTspice Reader
+text path: /Users/jellyfishrumble/develop/ltspice-plot/data/LPFButterWorthFreqChar_polar/LPFButterWorthFreqChar_dBdeg.txt
+sample size: 401
+frequencies range [Hz]: [1000.0, 10000000.0]
+amplitude range [dB] [-0.0163213687717722, -120.00101217432]
+phase ranges [deg]: [-1.1443753012390516, -268.8528622415462]
+
+# Drawer
+figure size: [7.2 4.8]
+```
