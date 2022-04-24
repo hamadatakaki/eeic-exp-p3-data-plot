@@ -4,7 +4,7 @@ import yaml
 
 
 from ltspice.LTspiceReader import LTspicePolarReader
-from ltspice.Drawer import SimpleDrawer
+from ltspice.Drawer import SimpleFreqDrawer
 
 
 def check_args(args):
@@ -23,7 +23,7 @@ def check_args(args):
 def main(args):
     reader, config = check_args(args)
 
-    drawer = SimpleDrawer(reader, args.output_image, config)
+    drawer = SimpleFreqDrawer(reader, args.output_image, config)
     drawer.save_figure()
     drawer.logging()
 

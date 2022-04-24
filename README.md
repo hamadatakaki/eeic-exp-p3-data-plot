@@ -45,10 +45,10 @@ Formatには `Polar: (dB, deg)` を指定してください。
 
 ![SBWFC](fig/butterworth_freq_char.png)
 
-対応するファイルは `plot_characteristics.py` です。
+対応するファイルは `plot_freq_characteristics.py` です。
 
 ```shell
-> python3 plot_characteristics -i <input txt path> -o <image dst path> -c config/simple_drawer.yaml
+> python3 plot_freq_characteristics -i <input txt path> -o <image dst path> -c config/simple_drawer.yaml
 ```
 
 `<imput txt path>` は周波数特性図に変換したい `.txt` のパスを、 `<image dst path>` は周波数特性図の保存先のパス（拡張子はpng）を指定してください。
@@ -57,7 +57,7 @@ Formatには `Polar: (dB, deg)` を指定してください。
 
 ```shell
 ## usage
-> python3 plot_characteristics.py -i data/butterworth.txt -o fig/butterworth_freq_char.png -c config/simple_drawer.yaml
+> python3 plot_freq_characteristics.py -i data/butterworth.txt -o fig/butterworth_freq_char.png -c config/simple_drawer.yaml
 # LTspice Reader
 text path: data/butterworth.txt
 sample size: 401
