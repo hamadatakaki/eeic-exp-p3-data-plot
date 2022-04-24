@@ -1,0 +1,11 @@
+figure:
+  figsize: [14.4, 4.8]
+
+  options:
+    ButterWorth:
+      config: ./config/ButterWorthLPFFreq.yaml
+      input: ./data/butterworth.txt
+
+    Chebyshev:
+      config: ./config/ChebyshevLPFFreq.yaml
+      input: ./data/chebyshev.txt

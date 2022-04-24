@@ -1,3 +1,6 @@
+import yaml
+
+
 def safe_dictionary_access(dic, query, failval, warning=True):
     d = dic
     for q in query:
@@ -28,6 +31,13 @@ def safe_dictionary_access(dic, query, failval, warning=True):
 
 def none_wrap(x, y):
     return x if x is not None else y
+
+
+def load_yaml(yamlpath):
+    with open(yamlpath, "r") as r:
+        stream = r.read()
+
+    return yaml.safe_load(stream)
 
 
 if __name__ == "__main__":
